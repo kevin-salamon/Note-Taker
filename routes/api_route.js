@@ -12,7 +12,7 @@ module.exports = function(app) {
       let dbString = JSON.stringify(db);
       fs.writeFile("db/db.json", dbString, function (err) {
           if (err) {
-              return console.log(err);
+            console.log(err);
           }
           console.log("Completed.");
       });
