@@ -8,16 +8,14 @@ module.exports = function(app) {
     });
   
     app.post("/api/notes", function (req, res) {
-      var newNote = JSON.stringify(req.body);
-      console.log("req.body is :" + JSON.stringify(req.body)); //logs!
-      res.send("received, thanks")
-      fs.appendFile("db/db.json", newNote, function (err) {
+      db.push(req.body);
+      let dbString = JSON.stringify(db);
+      fs.writeFile("db/db.json", dbString, function (err) {
           if (err) {
               return console.log(err);
           }
-          console.log("Success!");
+          console.log("Completed.");
       });
-    });
+  });
 
 };
-  
