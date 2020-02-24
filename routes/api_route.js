@@ -9,6 +9,7 @@ module.exports = function(app) {
   
     app.post("/api/notes", function (req, res) {
       db.push(req.body);
+      res.json(true);
       let dbString = JSON.stringify(db);
       fs.writeFile("db/db.json", dbString, function (err) {
           if (err) {
